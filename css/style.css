@@ -366,10 +366,9 @@ ul,ol {
 
 .recent-game-item .rgi-content {
 	padding: 34px 22px 20px;
-	background: #fff;
-	border: 1px solid #d6dee7;
-	border-top: none;
-	position: relative;
+	background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); /* Floute ce qui est derrière la boîte */
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .recent-game-item .rgi-content h5 {

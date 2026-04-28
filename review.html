@@ -66,28 +66,33 @@
 	<section class="page-section review-page spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 mb-5" [bloc_jeux;block=div]> 
 					<div class="recent-game-item">
-						<div class="rgi-thumb set-bg" data-setbg="img/recent-game/[bloc_jeux.image;block=div]">
+						
+						<div class="rgi-thumb set-bg" data-setbg="img/recent-game/[bloc_jeux.image]">
 							<div class="cata">[bloc_jeux.categorie]</div>
-						</div>
-						<div class="rgi-content">
-							<h5>[bloc_jeux.titre]</h5>
-							<p>[bloc_jeux.description]</p>
-							<a href="#" class="comment">[bloc_jeux.nb_commentaires] Comments</a>
+						</div> <div class="rgi-content" style="background: white; padding: 20px;">
+							<h5 style="color: #333;">[bloc_jeux.titre]</h5>
+							<p style="color: #666;">[bloc_jeux.description;strconv=no]</p>
+							
 							<div class="rgi-extra">
+								<a href="#" class="comment">[bloc_jeux.nb_commentaires;noerr] Comments</a>
 								<div class="rgi-star"><img src="img/icons/star.png" alt=""></div>
 								<div class="rgi-heart"><img src="img/icons/heart.png" alt=""></div>
 							</div>
 						</div>
-					</div>	
+
+					</div>  
 				</div>
+			</div>
 				
 				
 		
 			</div>
 			<div class="text-center pt-4">
-				<button class="site-btn btn-sm">Load More</button>
+				<a href="gamecontroller.php?p=games&limit=[var.prochaineLimite]" class="site-btn btn-sm">
+					Load More
+				</a>
 			</div>
 		</div>
 	</section>

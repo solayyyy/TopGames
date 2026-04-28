@@ -17,7 +17,17 @@ $page = isset($_GET['p']) ? $_GET['p'] : 'home';
 
 switch ($page) {
     case 'games':
-        $requete = $db->query("SELECT * FROM Jeux");
+      
+        $limite = isset($_GET['limit']) ? intval($_GET['limit']) : 10;
+        
+        
+        $prochaineLimite = $limite + 10;
+
+       
+        $requete = $db->prepare("SELECT * FROM Jeux LIMIT :limite");
+        $requete->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $requete->execute();
+        
         $mesJeux = $requete->fetchAll(PDO::FETCH_ASSOC);
         
         $tbs->LoadTemplate("review.html"); 

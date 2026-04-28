@@ -2,7 +2,7 @@
 session_start();
 require("connect.inc.php");
 
-$pdo = new PDO("mysql:host=$host;port=3307;dbname=$dbname;charset=utf8", $login, $password);
+$pdo = new PDO("mysql:host=$host;port=3306;dbname=$dbname;charset=utf8", $login, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $action = $_POST['action'] ?? '';
