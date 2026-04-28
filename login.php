@@ -13,7 +13,7 @@
     <!-- Menu -->
     <header class="header-section">
         <div class="container">
-            <a class="site-logo" href="index.html">
+            <a class="site-logo" href="gamecontroller.php?p=home">
                 <img src="img/logo.png" alt="">
             </a>
             <div class="user-panel">
@@ -21,9 +21,9 @@
             </div>
             <nav class="main-menu">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="review.html">Games</a></li>
-                    <li><a href="categories.html">Blog</a></li>
+                    <li><a href="gamecontroller.php?p=home">Home</a></li>
+                    <li><a href="gamecontroller.php?p=games">Games</a></li>
+                    <li><a href="gamecontroller.php?p=categories">Blog</a></li>
                 </ul>
             </nav>
         </div>

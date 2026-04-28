@@ -1,38 +1,42 @@
 <?php
-
 require("tbs_class.php");
 require("connect.inc.php");
 
 $tbs = new clsTinyButStrong;
 
-// On initialise les variables pour éviter les erreurs
-$db = null;
-$etatConnexion = "";
 
 try {
-    // 1. On crée la connexion et on l'assigne à $db
     $db = new PDO("mysql:host=$host;dbname=$dbname", $login, $password);
-    
-    // Configurer PDO pour afficher les erreurs SQL
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    $etatConnexion = "Connexion Réussie";
 } catch (PDOException $erreur) {
-    // Si la connexion échoue, on affiche l'erreur
-    $etatConnexion = "Erreur de connexion : " . $erreur->getMessage();
-    die($etatConnexion); 
+    die("Erreur de connexion : " . $erreur->getMessage());
 }
 
-// 2. On utilise $db (et non plus getConnexion())
-$requete = $db->query("SELECT * FROM Jeux");
-$mesJeux = $requete->fetchAll(PDO::FETCH_ASSOC);
+$page = isset($_GET['p']) ? $_GET['p'] : 'home';
 
-// 3. Affichage avec TinyButStrong
-$tbs->LoadTemplate("review.html");
-$tbs->MergeBlock('bloc_jeux', $mesJeux); 
 
+switch ($page) {
+    case 'games':
+        $requete = $db->query("SELECT * FROM Jeux");
+        $mesJeux = $requete->fetchAll(PDO::FETCH_ASSOC);
+        
+        $tbs->LoadTemplate("review.html"); 
+        $tbs->MergeBlock('bloc_jeux', $mesJeux);
+        break;
+
+    case 'blog':
+        
+        $tbs->LoadTemplate("categories.html"); 
+        // $tbs->MergeBlock('bloc_blog', $mesArticles);
+        break;
+
+    case 'home':
+    default:
+        $tbs->LoadTemplate("index.html"); 
+        break;
+}
+
+// 4. Affichage final
 $tbs->Show();
-
 ?>
-
 

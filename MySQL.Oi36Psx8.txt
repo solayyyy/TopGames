@@ -1,0 +1,4 @@
+serveur MySQL      : mysql03.univ-lyon2.fr
+utilisateur        : php_lepascal
+base de données    : php_lepascal
+mot de passe MySQL : l3idgTDfwQYHUBT7055sR-ZLK
