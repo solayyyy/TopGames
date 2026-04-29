@@ -96,6 +96,41 @@ switch ($page) {
         header("Location: gamecontroller.php?p=games");
         exit();
         break;
+    
+    case 'add_comment':
+        if (!isset($_SESSION['user'])) { header("Location: login.php"); exit(); }
+
+        $id_jeu = intval($_POST['id_jeu']);
+        $message = htmlspecialchars($_POST['message']);
+
+        $stmt = $db->prepare("INSERT INTO commentaires (id_jeu, id_user, pseudo, message) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$id_jeu, $_SESSION['user_id'], $_SESSION['user'], $message]);
+
+       
+        header("Location: gamecontroller.php?p=details&id=" . $id_jeu);
+        exit();
+    break;
+
+    case 'details':
+        $id_jeu = intval($_GET['id']);
+
+        
+        $stmt = $db->prepare("SELECT * FROM Jeux WHERE id = ?");
+        $stmt->execute([$id_jeu]);
+        $leJeu = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$leJeu) { header("Location: gamecontroller.php?p=games"); exit(); }
+
+        
+        $stmtComm = $db->prepare("SELECT * FROM commentaires WHERE id_jeu = ? ORDER BY date_post DESC");
+        $stmtComm->execute([$id_jeu]);
+        $listeCommentaires = $stmtComm->fetchAll(PDO::FETCH_ASSOC);
+
+        
+        $tbs->LoadTemplate("details.html");
+        $tbs->MergeField('jeu', $leJeu);
+        $tbs->MergeBlock('comm', $listeCommentaires);
+    break;
     }
 
 // Test temporaire à supprimer après

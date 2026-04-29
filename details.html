@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Top games Catalogue</title>
+	<meta charset="UTF-8">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/owl.carousel.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/animate.css"/>
+
+
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+
+	<!-- Menu-->
+	<header class="header-section">
+		<div class="container">
+			<!-- logo -->
+			<a class="site-logo" href="gamecontroller.php?p=home">
+				<img src="img/logo.png" alt="">
+			</a>
+
+			<!--Login-->
+			<div class="user-panel">
+				<div [onshow;block=div;when [var.statut]=='visiteur']>
+					<a href="login.php">Login</a> / <a href="login.php?mode=register">Register</a>
+				</div>
+
+				<div [onshow;block=div;when [var.statut]=='connecte']>
+					<a href="#" style="color: #ffffff;">
+						<i class="fa fa-user-circle"></i> [var.pseudo_tbs]
+					</a>
+					<span style="color: #fff;"> | </span>
+					<a href="logout.php" style="font-size: 12px; color: #aaa;">Logout</a>
+				</div>
+			</div>
+
+			<!-- Menu -->
+			<nav class="main-menu">
+				<ul>
+					<li><a href="gamecontroller.php?p=home">Home</a></li>
+					<li><a href="gamecontroller.php?p=games">Games</a></li>
+					<li><a href="gamecontroller.php?p=categories">Blog</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+<section class="page-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="img/recent-game/[jeu.image]" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                <h2 class="mt-4" style="color: #ffb320;">[jeu.titre]</h2>
+                <p class="mt-3" style="color: #ccc; font-size: 18px;">[jeu.description;strconv=no]</p>
+            </div>
+        </div>
+
+        <hr style="border-top: 1px solid #444; margin: 50px 0;">
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h4 style="color: #fff;" class="mb-4">Commentaires ([comm.#])</h4>
+
+                <div style="background: #2a114d; padding: 20px; border-radius: 10px; margin-bottom: 20px;" [comm;block=div]>
+                    <p style="margin-bottom: 5px;">
+                        <strong style="color: #ffb320;">[comm.pseudo]</strong> 
+                        <span style="font-size: 12px; color: #888; margin-left: 10px;">[comm.date_post;frm='dd/mm/yyyy à HH:nn']</span>
+                    </p>
+                    <p style="color: #eee; margin: 0;">[comm.message]</p>
+                </div>
+
+                <p [comm;block=p;nodata] style="color: #888;">Aucun commentaire pour le moment. Soyez le premier !</p>
+
+                <div [onshow;block=div;when [var.statut]=='connecte'] class="mt-5">
+                    <h5 style="color: #fff;" class="mb-3">Laisse ton avis</h5>
+                    <form action="gamecontroller.php?p=add_comment" method="POST">
+                        <input type="hidden" name="id_jeu" value="[jeu.id]">
+                        <textarea name="message" required style="width: 100%; background: #1a0b2e; color: white; border: 1px solid #444; border-radius: 5px; padding: 15px; min-height: 100px;"></textarea>
+                        <button type="submit" class="site-btn mt-3">Poster le commentaire</button>
+                    </form>
+                </div>
+
+                <div [onshow;block=div;when [var.statut]=='visiteur'] class="mt-4 p-3" style="background: #1a0b2e; border-radius: 5px;">
+                    <p style="margin: 0;">Tu dois être <a href="login.php" style="color: #ffb320;">connecté</a> pour poster un commentaire.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
