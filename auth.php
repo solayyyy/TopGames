@@ -23,7 +23,7 @@ if ($action === 'login') {
     if ($user && password_verify($mdp, $user['password'])) {
         $_SESSION['user_id']  = $user['id'];
         $_SESSION['user'] = $user['username'];
-        header('Location: gamecontroller.php');
+        header('Location: gamecontroller.php?p=home');
         exit;
     } else {
         header('Location: login.php?error=Identifiants+incorrects');
