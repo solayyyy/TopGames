@@ -30,7 +30,17 @@
 
 			<!--Login-->
 			<div class="user-panel">
-				<a href="login.php">Login</a>  /  <a href="login.php?mode=register">Register</a>
+				<div [onshow;if [ss.user]=='';then 'block=div']>
+					<a href="login.php">Login</a> / <a href="login.php?mode=register">Register</a>
+				</div>
+
+				<div [onshow;if [ss.user]!='';then 'block=div']>
+					<a href="profile.php" style="color: #ffffff;">
+						<i class="fa fa-user-circle"></i> [var.pseudo]
+					</a>
+					<span style="color: #fff;"> | </span>
+					<a href="logout.php" style="font-size: 12px; color: #aaa;">Logout</a>
+				</div>
 			</div>
 
 			<!-- Menu -->

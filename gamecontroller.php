@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("tbs_class.php");
 require("connect.inc.php");
 
@@ -45,6 +46,13 @@ switch ($page) {
         $tbs->LoadTemplate("index.html"); 
         break;
 }
+
+$estConnecte = isset($_SESSION['user']) ? true : false;
+$pseudo = $estConnecte ? $_SESSION['user'] : "";
+
+$tbs->VarRef['pseudo'] = $pseudo;
+$tbs->VarRef['estConnecte'] = $estConnecte;
+
 
 // 4. Affichage final
 $tbs->Show();
