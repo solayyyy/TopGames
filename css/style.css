@@ -677,6 +677,134 @@ ul,ol {
 
 .social-links a { color: #474747; font-size: 16px; margin-left: 10px; margin-right: 20px; }
 
-@media (min-width: 1200px) {
-	.container { max-width: 1176px; }
+.page-section {
+    padding: 60px 20px;
+    background: #131313;
+}
+
+.profile-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #252525;
+    border-radius: 15px;
+    padding: 40px;
+    border-top: 3px solid #ffb320;
+    text-align: center;
+}
+
+.profile-icon {
+    margin-bottom: 15px;
+    color: #ffb320;
+}
+
+.profile-username {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.profile-subtitle {
+    color: #ffb320;
+    font-size: 14px;
+}
+
+.profile-divider {
+    border-color: #333;
+    margin: 20px 0;
+}
+
+.profile-info {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.profile-info p {
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+    color: #fff;
+}
+
+.profile-info p:last-child {
+    border-bottom: none;
+}
+
+.profile-info strong {
+    color: #ffb320;
+}
+
+.profile-fav-title {
+    text-align: center;
+    font-size: 24px;
+    margin: 30px 0 20px;
+    color: #ffb320;
+}
+
+.fav-game-card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.fav-game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(255, 179, 32, 0.3);
+}
+
+.fav-game-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.fav-game-title {
+    padding: 15px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.site-btn {
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-sm {
+    padding: 8px 18px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #ffb320;
+    color: #131313;
+}
+
+.btn-primary:hover {
+    background: #ff9500;
+}
+
+.btn-danger {
+    background: #ff205f;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: #e01850;
 }
